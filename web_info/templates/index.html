@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+  <!-- Basic Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Site Meta -->
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="{% static 'favicon.png' %}" type="image/x-icon">
+
+  <!-- Title -->
+  <title>Finexo</title>
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+
+<body>
+
+  <div class="hero_area">
+
+    <div class="hero_bg_box">
+      <div class="bg_img_box">
+        <img src="{% static 'images/hero-bg.png' %}" alt="Hero Background">
+      </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="{% url 'index' %}">
+            <span>Finexo</span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'service' %}">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'why' %}">Why Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'team' %}">Team</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}"> <i class="fa fa-user"></i> Login</a>
+              </li>
+            </ul>
+
+            <!-- Search Form -->
+            <form class="form-inline">
+              <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </form>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="slider_section">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h1>{{ hero.title }}</h1>
+                    <p>{{ hero.body }}</p>
+                    <div class="btn-box">
+                      <a href="" class="btn1">Read More</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{% static 'images/slider-img.png' %}" alt="Slider Image">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ol class="carousel-indicators">
+          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel1" data-slide-to="1"></li>
+          <li data-target="#customCarousel1" data-slide-to="2"></li>
+        </ol>
+      </div>
+    </section>
+  </div>
+
+  <!-- Services Section -->
+  <section class="service_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>Our <span>Services</span></h2>
+        <p>There are many variations of passages of Lorem Ipsum available...</p>
+      </div>
+      <div class="row">
+        {% for service in services %}
+        <div class="col-md-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="{{ service.icon.url }}" alt="Service Icon">
+            </div>
+            <div class="detail-box">
+              <h5>{{ service.title }}</h5>
+              <p>{{ service.body }}</p>
+              <a href="#">Read More</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>About <span>Us</span></h2>
+        <p>{{ about.title }}</p>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static 'images/about-img.png' %}" alt="About Image">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <h3>{{ about.main_title }}</h3>
+            <p>{{ about.body }}</p>
+            <a href="#">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>© 2024 All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Files -->
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+
+</html>
